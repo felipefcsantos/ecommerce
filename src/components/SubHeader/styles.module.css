@@ -1,0 +1,18 @@
+.container{
+    align-items: center;
+    background: #e0e0e0;
+    display: flex;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+}
+
+.container span{
+    color: #8b8b8b;
+    margin-left: 10rem;
+}
+
+.icon{
+    color: #8b8b8b !important;
+    font-size: 1rem !important;
+    margin: 0 1rem !important;
+}
