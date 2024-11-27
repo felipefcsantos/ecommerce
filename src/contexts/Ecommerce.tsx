@@ -7,13 +7,8 @@ import {
 } from "react";
 import Produtos from "../interfaces/Produtos";
 import { buscarProdutos } from "../api/api-ecomerce";
-
-interface EcommerceContextType {
-  initialState: Produtos[];
-  listaProdutos: Produtos[];
-  listaCategorias: string[];
-  favoritarProduto: (id: number) => void;
-}
+import EcommerceContextType from "../interfaces/EcommerceContextType";
+import Categorias from "../interfaces/Categorias";
 
 const EcommerceContext = createContext<EcommerceContextType | undefined>(
   undefined
@@ -22,7 +17,7 @@ const EcommerceContext = createContext<EcommerceContextType | undefined>(
 const EcommerceProvider = ({ children }: { children: ReactNode }) => {
   const [initialState, setInitialState] = useState<Produtos[]>([]);
   const [listaProdutos, setListaProdutos] = useState<Produtos[]>([]);
-  const [listaCategorias, setListaCategorias] = useState<string[]>([]);
+  const [listaCategorias, setListaCategorias] = useState<Categorias[]>([]);
   const storageKey = "favoritosEcommerce";
 
   useEffect(() => {
@@ -37,9 +32,9 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
       });
       setInitialState(responseComFavorito);
       setListaProdutos(responseComFavorito);
-      const categorias = response.reduce((acc: string[], item: Produtos) => {
-        if (!acc.includes(item.category)) {
-          acc.push(item.category);
+      const categorias = response.reduce((acc: Categorias[], item: Produtos) => {
+        if (!acc.some((categoria) => categoria.name === item.category)) {
+          acc.push({name: item.category, checked: false});
         }
         return acc;
       }, []);
@@ -71,7 +66,9 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
       value={{
         initialState,
         listaProdutos,
+        setListaProdutos,
         listaCategorias,
+        setListaCategorias,
         favoritarProduto,
       }}
     >
