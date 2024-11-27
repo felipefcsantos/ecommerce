@@ -1,25 +1,24 @@
-import { useEffect,useState } from 'react'
-import SubHeader from '../../components/SubHeader'
-import { buscarProdutos } from '../../api/api-ecomerce'
-import Produto from '../../components/Produto'
-import Produtos from '../../interfaces/Produtos'
+import SubHeader from "../../components/SubHeader";
+import Produto from "../../components/Produto";
+import styles from "./styles.module.css";
+import Categorias from "../../components/Categorias";
+import { useEcommerceContext } from "../../contexts/Ecommerce";
 
 const Home = () => {
-  const [produtos, setProdutos] = useState<Produtos[]>([])
-  useEffect(() => {
-    const fetchProdutos = async() => {
-      const response = await buscarProdutos();
-      setProdutos(response);
-      
-    }
-    fetchProdutos()
-  } ,[])
+  const { listaProdutos } = useEcommerceContext();
   return (
     <div>
-      <SubHeader page='Home'/>
-      <Produto dados={produtos}/>
+      <SubHeader page="Home" />
+      <section className={styles.body}>
+        <div className={styles.category}>
+          <Categorias />
+        </div>
+        <div className={styles.shop}>
+          <Produto dados={listaProdutos} />
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

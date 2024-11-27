@@ -1,0 +1,10 @@
+.category{
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #c9c9c9;
+    min-height: 25rem;
+    padding: .2rem 1rem;
+}
+
+.title{
+    font-size: 1.3rem;
+}

@@ -1,0 +1,16 @@
+.body{
+    display: flex;
+    padding: 1rem 3rem;
+    /* justify-content: space-around; */
+}
+
+.category{
+    padding: 3rem;
+    width: 20vw;
+}
+
+.shop{
+    padding: 1rem;
+    margin-left: 2REM;
+    width: 80vw;
+}

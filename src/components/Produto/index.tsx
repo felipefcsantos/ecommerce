@@ -1,21 +1,42 @@
-import Produtos from '../../interfaces/Produtos'
-import styles from './styles.module.css'
+import Produtos from "../../interfaces/Produtos";
+import styles from "./styles.module.css";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const Produto = ({dados} : {dados: Produtos[]}) => {
+const Produto = ({ dados }: { dados: Produtos[] }) => {
   return (
-    <div>{dados.map((produto, index) => {
-        return(
-            <div key={index}>
-                <p>{produto.title}</p>
-                <p>{produto.description}</p>
-                <p>{produto.image}</p>
-                <p>{produto.price}</p>
-                <p>{produto.category}</p>
-                <hr/>
+    <div className={styles.container}>
+      {dados.map((produto) => {
+        return (
+          <div key={produto.id} className={styles.produto}>
+            <div className={styles.container_img}>
+              <img
+                className={styles.img}
+                src={produto.image}
+                alt={produto.description}
+              />
+              <div className={styles.overlay}>
+                <FavoriteBorderIcon className={styles.favorite}/>
+                <button className={styles.addToCartButton}>
+                  Add to cart <AddShoppingCartIcon sx={{marginLeft: '.5rem'}}/>
+                </button>
+              </div>
             </div>
-        )
-    })}</div>
-  )
-}
+            <hr />
+            <div className={styles.title}>
+              <p>{produto.title}</p>
+            </div>
+            <div className={styles.container_price}>
+              <span>
+                <p>IN STOCK</p>
+              </span>
+              <p className={styles.price}>R$ {produto.price}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-export default Produto
+export default Produto;
