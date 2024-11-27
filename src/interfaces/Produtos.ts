@@ -9,4 +9,5 @@ export default interface Produtos {
     rate: number;
     count: number;
   };
+  fav: boolean;
 }

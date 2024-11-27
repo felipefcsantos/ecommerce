@@ -12,6 +12,7 @@ interface EcommerceContextType {
   initialState: Produtos[];
   listaProdutos: Produtos[];
   listaCategorias: string[];
+  favoritarProduto: (id: number) => void;
 }
 
 const EcommerceContext = createContext<EcommerceContextType | undefined>(
@@ -22,12 +23,20 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
   const [initialState, setInitialState] = useState<Produtos[]>([]);
   const [listaProdutos, setListaProdutos] = useState<Produtos[]>([]);
   const [listaCategorias, setListaCategorias] = useState<string[]>([]);
+  const storageKey = "favoritosEcommerce";
 
   useEffect(() => {
     const fetchProdutos = async () => {
       const response = await buscarProdutos();
-      setInitialState(response)
-      setListaProdutos(response);
+      const responseComFavorito = response.map((item: Produtos) => {
+        const listaFavoritos = JSON.parse(
+          localStorage.getItem(storageKey) || "[]"
+        );
+        const index = listaFavoritos.indexOf(item.id);
+        return { ...item, fav: index === -1 ? false : true };
+      });
+      setInitialState(responseComFavorito);
+      setListaProdutos(responseComFavorito);
       const categorias = response.reduce((acc: string[], item: Produtos) => {
         if (!acc.includes(item.category)) {
           acc.push(item.category);
@@ -39,12 +48,31 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
     fetchProdutos();
   }, []);
 
+  const favoritarProduto = (id: number) => {
+    const favoritos = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    const index = favoritos.indexOf(id);
+  
+    if (index === -1) {
+      favoritos.push(id);
+    } else {
+      favoritos.splice(index, 1);
+    }
+    localStorage.setItem(storageKey, JSON.stringify(favoritos));
+  
+    setListaProdutos((prevState) =>
+      prevState.map((produto) =>
+        produto.id === id ? { ...produto, fav: index === -1 } : produto
+      )
+    );
+  };
+
   return (
     <EcommerceContext.Provider
       value={{
         initialState,
         listaProdutos,
         listaCategorias,
+        favoritarProduto,
       }}
     >
       {children}

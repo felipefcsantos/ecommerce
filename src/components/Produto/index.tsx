@@ -1,9 +1,25 @@
+import { useEcommerceContext } from "../../contexts/Ecommerce";
 import Produtos from "../../interfaces/Produtos";
 import styles from "./styles.module.css";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Produto = ({ dados }: { dados: Produtos[] }) => {
+  const { favoritarProduto } = useEcommerceContext();
+  const listaFavoritos = JSON.parse(
+    localStorage.getItem("favoritosEcommerce") || "[]"
+  );
+
+  const handleVerificaFavorito = (id: number) => {
+    const index = listaFavoritos.indexOf(id);
+    if (index === -1) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return (
     <div className={styles.container}>
       {dados.map((produto) => {
@@ -16,9 +32,20 @@ const Produto = ({ dados }: { dados: Produtos[] }) => {
                 alt={produto.description}
               />
               <div className={styles.overlay}>
-                <FavoriteBorderIcon className={styles.favorite}/>
+                {handleVerificaFavorito(produto.id) ? (
+                  <FavoriteIcon
+                    className={styles.favorite}
+                    onClick={() => favoritarProduto(produto.id)}
+                  />
+                ) : (
+                  <FavoriteBorderIcon
+                    className={styles.favorite}
+                    onClick={() => favoritarProduto(produto.id)}
+                  />
+                )}
                 <button className={styles.addToCartButton}>
-                  Add to cart <AddShoppingCartIcon sx={{marginLeft: '.5rem'}}/>
+                  Add to cart
+                  <AddShoppingCartIcon sx={{ marginLeft: ".5rem" }} />
                 </button>
               </div>
             </div>

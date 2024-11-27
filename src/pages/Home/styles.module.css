@@ -14,3 +14,10 @@
     margin-left: 2REM;
     width: 80vw;
 }
+
+.pagination{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
