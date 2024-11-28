@@ -13,18 +13,18 @@ const ItensCarrinho = () => {
 
   const handleOpenModal = (id: number) => {
     setItemExcluir(id);
-    setOpenModal(true)
+    setOpenModal(true);
   };
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-    setItemExcluir(0)
-  }
+    setOpenModal(false);
+    setItemExcluir(0);
+  };
 
   const handleRemover = () => {
-    removeItemDoCarrinho(itemExcluir)
-    handleCloseModal()
-  }
+    removeItemDoCarrinho(itemExcluir);
+    handleCloseModal();
+  };
 
   return (
     <>
@@ -68,23 +68,25 @@ const ItensCarrinho = () => {
         </div>
       </div>
       <Dialog open={openModal} onClose={handleCloseModal}>
-          <DialogContent>
-            <h3> Deseja realmente excluir do carrinho o item atual?</h3>
-          </DialogContent>
-          <DialogActions>
-            <Button
-                variant="outlined"
-                onClick={handleCloseModal}
-            >
-                Não
-            </Button>
-            <Button
-                variant="outlined"
-                onClick={handleRemover}
-            >
-                Sim
-            </Button>
-          </DialogActions>
+        <DialogContent>
+          <h3> Deseja realmente excluir do carrinho o item atual?</h3>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            onClick={handleCloseModal}
+            className={styles.btn_action}
+          >
+            Não
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleRemover}
+            className={styles.btn_action}
+          >
+            Sim
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );

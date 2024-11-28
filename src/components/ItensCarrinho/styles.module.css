@@ -1,45 +1,53 @@
-.container_carrinho{
-    max-width: 60vw;
-    padding: 1rem;
+.container_carrinho {
+  width: 60vw;
+  padding: 1rem;
 }
 
-.container_item{
-    padding: 2rem 4rem;
+.container_item {
+  padding: 2rem 4rem;
 }
 
-.img{
-    height: 6rem;
+.img {
+  height: 6rem;
 }
 
-.container_qtd{
-    display: flex;
-    justify-content: flex-end;
+.container_qtd {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.item_qtd{
-    align-items: center;
-    border: 1px solid #cfcfcf;
-    border-radius: 3px;
-    display: flex;
-    gap: .5rem;
+.item_qtd {
+  align-items: center;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  display: flex;
+  gap: 0.5rem;
 }
 
-.btn_qtd{
-    border-radius: 3px !important; 
-    cursor: pointer !important;
-    padding: .4rem !important;
-    transition: 500ms all !important;
-    &:active{
-        background: #cfcfcf !important;
-    }
+.btn_qtd {
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  padding: 0.4rem !important;
+  transition: 500ms all !important;
+  &:active {
+    background: #cfcfcf !important;
+  }
 }
-.btn{
-    background: #e4e4e4 !important;
-    border-radius: 3px !important; 
-    cursor: pointer !important;
-    padding: .4rem !important;
-    transition: 500ms all !important;
-    &:active{
-        background: #cfcfcf !important;
-    }
+.btn {
+  background: #e4e4e4 !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  padding: 0.4rem !important;
+  transition: 500ms all !important;
+  &:active {
+    background: #cfcfcf !important;
+  }
+}
+
+.btn_action {
+  background: #0f1847 !important;
+  margin-top: 2rem !important;
+  &:hover {
+    background: #060c2a !important;
+  }
 }

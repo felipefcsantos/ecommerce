@@ -1,3 +1,5 @@
-.container_title{
-    background: #e0e0e0;
+.container{
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 6rem;
 }

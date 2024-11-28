@@ -1,0 +1,50 @@
+.container {
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  padding: 1rem;
+  height: 27rem;
+  width: 20vw;
+}
+
+.title {
+  margin-bottom: 4rem;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.linha_total {
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.label {
+  color: #959595;
+}
+
+.btn_checkout {
+  background: #0f1847 !important;
+  margin-top: 2rem !important;
+  &:hover {
+    background: #060c2a !important;
+  }
+}
+
+.btn_ancora {
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.btn_actions {
+  background: #0f1847 !important;
+  margin-top: 2rem !important;
+  &:hover {
+    background: #060c2a !important;
+  }
+}

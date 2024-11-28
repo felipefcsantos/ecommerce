@@ -20,9 +20,9 @@ const Header = () => {
       <nav>
         <ul className={styles.container_nav}>
           <li onClick={() => handleNavigate("/")}>Home</li>
-          <li onClick={() => handleNavigate("/construcao")}>Categorias</li>
-          <li onClick={() => handleNavigate("/construcao")}>Sobre</li>
-          <li onClick={() => handleNavigate("/construcao")}>Contato</li>
+          <li onClick={() => handleNavigate("/")}>Categorias</li>
+          <li onClick={() => handleNavigate("/")}>Sobre</li>
+          <li onClick={() => handleNavigate("/")}>Contato</li>
         </ul>
       </nav>
       <section>

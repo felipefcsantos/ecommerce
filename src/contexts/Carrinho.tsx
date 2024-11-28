@@ -41,6 +41,11 @@ const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
     setListaCarrinho(novoCarrinho);
   };
 
+  const zerarCarrinho = () => {
+    localStorage.setItem(storageKey, JSON.stringify([]));
+    setListaCarrinho([]);
+  };
+
   const addQtd = (id: number) => {
     const novoCarrinho = listaCarrinho.map(carrinhoItem => 
         carrinhoItem.id === id ? { ...carrinhoItem, qtd: carrinhoItem.qtd + 1 } : carrinhoItem
@@ -68,6 +73,7 @@ const removeQtd = (id: number) => {
         listaCarrinho,
         adicionaItemNoCarrinho,
         removeItemDoCarrinho,
+        zerarCarrinho,
         addQtd,
         removeQtd
       }}

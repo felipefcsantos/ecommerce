@@ -107,3 +107,16 @@
     transform: scale(1.1);
   }
 }
+.favorite_fixed{
+  cursor: pointer;
+  margin: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 500ms all;
+  &:hover{
+    color: red;
+    transform: scale(1.1);
+  }
+}
+

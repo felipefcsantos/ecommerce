@@ -8,4 +8,5 @@ export default interface EcommerceContextType {
     listaCategorias: Categorias[];
     setListaCategorias: React.Dispatch<React.SetStateAction<Categorias[]>>;
     favoritarProduto: (id: number) => void;
+    pesquisarProdutos: (texto: string) => void;
   }

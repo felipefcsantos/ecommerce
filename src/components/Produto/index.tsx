@@ -30,12 +30,19 @@ const Produto = ({ dados }: { dados: Produtos[] }) => {
           return (
             <Grid size={4} key={produto.id}>
             <div className={styles.produto}>
+          
               <div className={styles.container_img}>
                 <img
                   className={styles.img}
                   src={produto.image}
                   alt={produto.description}
                 />
+                  {handleVerificaFavorito(produto.id) && (
+                    <FavoriteIcon
+                      className={styles.favorite_fixed}
+                      onClick={() => favoritarProduto(produto.id)}
+                    />
+                  )}
                 <div className={styles.overlay}>
                   {handleVerificaFavorito(produto.id) ? (
                     <FavoriteIcon

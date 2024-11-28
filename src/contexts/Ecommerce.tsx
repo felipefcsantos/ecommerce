@@ -61,6 +61,19 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const pesquisarProdutos = (texto: string) => {
+    const textoLowerCase = texto.toLowerCase();
+
+    if (texto) {
+      const itensFiltrados = initialState.filter(item => 
+        item.title && item.title.toLowerCase().includes(textoLowerCase)
+    );
+      setListaProdutos(itensFiltrados)
+    } else {
+      setListaProdutos(initialState)
+    }
+  }
+
   return (
     <EcommerceContext.Provider
       value={{
@@ -70,6 +83,7 @@ const EcommerceProvider = ({ children }: { children: ReactNode }) => {
         listaCategorias,
         setListaCategorias,
         favoritarProduto,
+        pesquisarProdutos
       }}
     >
       {children}
