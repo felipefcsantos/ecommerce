@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import CarrinhoContextType from "../interfaces/CarrinhoContextType";
 import Produtos from "../interfaces/Produtos";
 
@@ -10,6 +16,10 @@ const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
   const [listaCarrinho, setListaCarrinho] = useState<Produtos[]>([]);
   const storageKey = "carrinhoEcommerce";
   const carrinho = JSON.parse(localStorage.getItem(storageKey) || "[]");
+
+  useEffect(() => {
+    setListaCarrinho(carrinho);
+  }, []);
 
   const adicionaItemNoCarrinho = (item: Produtos) => {
     const existe = carrinho.some(
@@ -31,12 +41,35 @@ const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
     setListaCarrinho(novoCarrinho);
   };
 
+  const addQtd = (id: number) => {
+    const novoCarrinho = listaCarrinho.map(carrinhoItem => 
+        carrinhoItem.id === id ? { ...carrinhoItem, qtd: carrinhoItem.qtd + 1 } : carrinhoItem
+    );
+    localStorage.setItem(storageKey, JSON.stringify(novoCarrinho));
+    setListaCarrinho(novoCarrinho);
+}
+
+const removeQtd = (id: number) => {
+  const itemSelecionado = listaCarrinho.find(item => item.id === id)
+  if (itemSelecionado?.qtd === 1) {
+    removeItemDoCarrinho(id)
+  }else{
+    const novoCarrinho = listaCarrinho.map(carrinhoItem => 
+      carrinhoItem.id === id ? { ...carrinhoItem, qtd: carrinhoItem.qtd - 1 } : carrinhoItem
+  );
+  localStorage.setItem(storageKey, JSON.stringify(novoCarrinho));
+  setListaCarrinho(novoCarrinho);
+  }
+}
+
   return (
     <CarrinhoContext.Provider
       value={{
         listaCarrinho,
         adicionaItemNoCarrinho,
         removeItemDoCarrinho,
+        addQtd,
+        removeQtd
       }}
     >
       {children}
