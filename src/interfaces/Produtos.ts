@@ -10,4 +10,5 @@ export default interface Produtos {
     count: number;
   };
   fav: boolean;
+  qtd: number;
 }

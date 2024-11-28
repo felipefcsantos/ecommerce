@@ -5,9 +5,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Grid from "@mui/material/Grid2";
+import { useCarrinhoContext } from "../../contexts/Carrinho";
 
 const Produto = ({ dados }: { dados: Produtos[] }) => {
   const { favoritarProduto } = useEcommerceContext();
+  const {adicionaItemNoCarrinho} = useCarrinhoContext()
   const listaFavoritos = JSON.parse(
     localStorage.getItem("favoritosEcommerce") || "[]"
   );
@@ -46,7 +48,7 @@ const Produto = ({ dados }: { dados: Produtos[] }) => {
                       onClick={() => favoritarProduto(produto.id)}
                     />
                   )}
-                  <button className={styles.addToCartButton}>
+                  <button className={styles.addToCartButton} onClick={() => adicionaItemNoCarrinho(produto)}>
                     Add to cart
                     <AddShoppingCartIcon sx={{ marginLeft: ".5rem" }} />
                   </button>

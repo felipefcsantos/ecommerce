@@ -1,12 +1,12 @@
-import React from 'react'
-import SubHeader from '../../components/SubHeader'
+import SubHeader from "../../components/SubHeader";
+import styles from "./stles.module.css"
 
 const Carrinho = () => {
   return (
     <div>
-      <SubHeader page='Carrinho'/>
+      <SubHeader page="Carrinho"  title="Carrinho"/>
     </div>
-  )
-}
+  );
+};
 
-export default Carrinho
+export default Carrinho;

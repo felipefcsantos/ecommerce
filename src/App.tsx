@@ -1,11 +1,14 @@
+import { CarrinhoProvider } from "./contexts/Carrinho";
 import { EcommerceProvider } from "./contexts/Ecommerce";
 import Router from "./routes/router";
 
 function App() {
   return (
     <>
-    <EcommerceProvider>
-      <Router />
+      <EcommerceProvider>
+        <CarrinhoProvider>
+          <Router />
+        </CarrinhoProvider>
       </EcommerceProvider>
     </>
   );
