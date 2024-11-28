@@ -1,6 +1,6 @@
 # E-commerce React com TypeScript
 
-Bem-vindo ao projeto **E-commerce React com TypeScript**! Este repositório contém o código-fonte de uma aplicação de e-commerce desenvolvida em React com TypeScript, projetada para oferecer uma experiência moderna e responsiva de compra online.
+Bem-vindo ao projeto **E-commerce React com TypeScript**! Este repositório contém o código-fonte de uma aplicação de e-commerce desenvolvida em React com TypeScript, projetada para oferecer uma experiência moderna de compra online.
 
 ## Funcionalidades
 
