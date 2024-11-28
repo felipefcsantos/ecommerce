@@ -9,6 +9,12 @@ Bem-vindo ao projeto **E-commerce React com TypeScript**! Este repositório cont
 - **Sistema de Pesquisa**: Busca avançada para encontrar produtos rapidamente.
 - **Carrinho de Compras**: Gerenciamento de itens no carrinho com cálculo de preços.
 
+## Visualização Online
+
+Você pode acessar a aplicação em funcionamento clicando no link abaixo:
+
+🔗 [E-commerce React - Visualização na Vercel](https://ecommerce-zeta-nine-26.vercel.app/)
+
 ## Tecnologias Utilizadas
 
 - **React**: Biblioteca principal para construção da interface.
